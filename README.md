@@ -1,0 +1,4 @@
+tmux
+alacritty
+newsboat
+btop

@@ -1,0 +1,40 @@
+"query:YouTube:tags # \"YouTube\""
+https://www.youtube.com/feeds/videos.xml?channel_id=UCkf4VIqu3Acnfzuk3kRIFwA "Linux" "Youtube"                              #gobletu
+https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "Linux" "YouTube"                              #distrotube
+https://www.youtube.com/feeds/videos.xml?channel_id=UCZiL6BoryLWxyapUuVYW27g "Linux" "YouTube"                              #avg linux user
+https://www.youtube.com/feeds/videos.xml?channel_id=UCg6gPGh8HU2U01vaFCAsvmQ "Linux" "YouTube"                              #chris titus
+https://www.youtube.com/feeds/videos.xml?channel_id=UCS97tchJDq17Qms3cux8wcA "Linux" "YouTube"                              #chris at machine
+https://www.youtube.com/feeds/videos.xml?channel_id=UCUuWlKrLVaR6_yTckhLG7hg "Linux" "YouTube"                              #linux leech
+https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA "Linux" "YouTube"                              #Brodie
+https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA "Linux" "YouTube"                              #Mental Outlaw
+https://www.youtube.com/feeds/videos.xml?channel_id=UCngn7SVujlvskHRvRKc1cTw "Linux" "YouTube"                              #Bugs Writer
+https://www.youtube.com/feeds/videos.xml?channel_id=UCorzANoC3fX9VVefJHM5wtA "Linux" "YouTube"                              #Nick Janetakis
+https://www.youtube.com/feeds/videos.xml?channel_id=UCmO_G49F6QTFS5CPUfuQADg "Linux" "YouTube"                              #Sparty Cup of Linux
+https://www.youtube.com/feeds/videos.xml?channel_id=UCsnGwSIHyoYN0kiINAGUKxg "Linux" "YouTube"                              #Wolf Gang
+https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "Linux" "YouTube"                              #Luke Smith
+https://www.youtube.com/feeds/videos.xml?channel_id=UCi8XrDg1bK_MJ0goOnbpTMQ "Linux" "YouTube"                              #Budlabs
+https://www.youtube.com/feeds/videos.xml?channel_id=UCJYVW4HVrMWpUvvsjPQc8-Q "Linux" "YouTube"                              #Dorian Dot Slash
+https://www.youtube.com/feeds/videos.xml?channel_id=UCJetJ7nDNLlEzDLXv7KIo0w "Linux" "YouTube"                              #Gavin Freeborn
+https://www.youtube.com/feeds/videos.xml?channel_id=UCJdmdUp5BrsWsYVQUylCMLg "Linux" "YouTube" "~Arco Linux"                #Arco Linux
+https://www.youtube.com/feeds/videos.xml?channel_id=UCfLsPYDDrGaFc9XhfDM-ktA "Linux" "YouTube"                              #Null Byte
+https://www.youtube.com/feeds/videos.xml?channel_id=UCXuqSBlHAE6Xw-yeJA0Tunw "Tech"  "Youtube"                              #Linus Tech Tips
+https://www.youtube.com/feeds/videos.xml?channel_id=UCtUqetWlf7GCvbbAqhI8fnA "Comedy" "Yotube"                              #i know i am awesome
+https://www.youtube.com/feeds/videos.xml?channel_id=UCOOMgoGO9PwAb65v6Zyj43w "Comedy" "Yotube"                              #Nik Tek
+https://www.youtube.com/feeds/videos.xml?channel_id=UCeeFfhMcJa1kjtfZAGskOCA "Comedy" "Yotube"                              #Technlinked
+https://www.youtube.com/feeds/videos.xml?channel_id=UCj22tfcQrWG7EMEKS0qLeEg "Comedy" "Yotube"                              #Carry Minati
+https://www.youtube.com/feeds/videos.xml?channel_id=UC7eHZXheF8nVOfwB2PEslMw "Comedy" "Yotube"                              #Ashish Chanchalani
+https://www.youtube.com/feeds/videos.xml?channel_id=UCeE3lj6pLX_gCd0Yvns517Q "Comedy" "Yotube"                              #oozy man
+https://www.youtube.com/feeds/videos.xml?channel_id=UCqwUrj10mAEsqezcItqvwEw "Comedy" "Yotube"                              #BB Ki Vines
+
+"query:Reddit:tags # \"Reddit\""
+https://www.reddit.com/r/bash.rss "Reddit" "linux bash"
+https://www.reddit.com/r/vim.rss "Reddit" "linux"
+https://www.reddit.com/user/C4rnAg3.rss "Reddit" "~Bangladeshi Bash"
+
+"query:Blogs:tags # \"Blog\""
+https://www.archlinux.org/feeds/news/ "Blog" "linux"
+https://opensource.com/taxonomy/term/6803/feed "Blog" "linux"
+https://www.chrisatmachine.com/rss.xml "Blog" "linux"
+https://www.howtogeek.com/feed/ "Blog" "howtogeek"
+https://www.topbug.net/blog/category/unix-variants/gnu-linux/feed/ "Blog" "linux"
+http://lukesmith.xyz/rss.xml "Blog" "linux"
