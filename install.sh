@@ -22,10 +22,10 @@ confirm brew install taskd
 confirm brew install newsboat
 confirm brew install ripgrep
 confirm brew install font-hack-nerd-font
-
 confirm npm install -g ls_emmet
 
 echo "Installing casks..."
+confirm brew install --cask kitty
 # Example:
 # confirm brew install --cask iterm2
 
