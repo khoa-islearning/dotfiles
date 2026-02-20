@@ -24,6 +24,13 @@ confirm brew install ripgrep
 confirm brew install font-hack-nerd-font
 confirm npm install -g ls_emmet
 
+echo "Installing lazygit..."
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  confirm brew install lazygit
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  confirm sudo apt install lazygit
+fi
+
 echo "Installing casks..."
 confirm brew install --cask kitty
 # Example:
