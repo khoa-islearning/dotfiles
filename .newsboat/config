@@ -1,0 +1,13 @@
+# How many items to keep
+max-items 500
+
+# Show full text in the terminal
+show-read-feeds yes
+show-all-articles yes
+
+# Open links in your preferred browser
+browser "firefox"
+
+# Keyboard shortcuts (optional)
+bind-key r reload       # Refresh all feeds
+bind-key q quit         # Quit Newsboat
