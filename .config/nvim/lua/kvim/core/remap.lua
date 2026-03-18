@@ -25,3 +25,18 @@ keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move line down" }) -- mov
 -- copy line up/down
 keymap.set("n", "<C-K>", "yyp", { desc = "Clone line" })
 keymap.set("i", "<C-K>", "<Esc>yypi", { desc = "Clone line" })
+
+-- copy file:line to clipboard
+keymap.set("n", "gl", function()
+  local ref = vim.fn.expand("%") .. ":" .. vim.fn.line(".")
+  vim.fn.setreg("+", ref)
+  print("Copied: " .. ref)
+end, { desc = "Yank file:line to clipboard" })
+
+keymap.set("v", "gl", function()
+  local start_line = vim.fn.line("'<")
+  local end_line = vim.fn.line("'>")
+  local ref = vim.fn.expand("%") .. ":" .. start_line .. "-" .. end_line
+  vim.fn.setreg("+", ref)
+  print("Copied: " .. ref)
+end, { desc = "Yank file:start-end to clipboard" })

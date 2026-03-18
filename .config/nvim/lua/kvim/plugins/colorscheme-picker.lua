@@ -57,7 +57,7 @@ return {
         return
       end
       colorscheme.setup({
-        default_colorscheme = "monokai_soda",
+        default_colorscheme = "",
         keymapping = "<leader>cs",
         default_colorscheme_keymapping = "<leader>CD",
       })

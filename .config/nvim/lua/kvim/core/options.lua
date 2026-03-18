@@ -32,3 +32,11 @@ opt.swapfile = false
 
 -- conceal
 opt.conceallevel = 2
+
+-- use terminal background instead of theme background
+local function clear_bg()
+  vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", ctermbg = "NONE" })
+  vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE", ctermbg = "NONE" })
+end
+vim.api.nvim_create_autocmd("ColorScheme", { callback = clear_bg })
+vim.api.nvim_create_autocmd("VimEnter", { callback = clear_bg })
