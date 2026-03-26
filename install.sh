@@ -18,6 +18,7 @@ confirm brew install zsh
 confirm brew install neovim
 confirm brew install tmux
 confirm brew install btop
+confirm brew install gitmux
 confirm brew install taskd
 confirm brew install newsboat
 confirm brew install ripgrep
