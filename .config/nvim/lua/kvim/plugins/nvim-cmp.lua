@@ -74,31 +74,10 @@ M.config = function()
     }),
   })
 
-  -- Set up lspconfig.
-  local capabilities = require("cmp_nvim_lsp").default_capabilities()
-  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-  require("lspconfig")["bashls"].setup({
-    capabilities = capabilities,
-  })
-
-  require("lspconfig")["clangd"].setup({
-    capabilities = capabilities,
-  })
-
-  require("lspconfig")["pyright"].setup({
-    capabilities = capabilities,
-  })
-
-  require("lspconfig")["lua_ls"].setup({
-    capabilities = capabilities,
-  })
-
-  require("lspconfig")["cssls"].setup({
-    capabilities = capabilities,
-  })
-
-  require("lspconfig")["ts_ls"].setup({
-    capabilities = capabilities,
+  -- Advertise cmp's completion capabilities to every LSP server at once.
+  -- Servers are enabled in lspconfig.lua; this only augments their capabilities.
+  vim.lsp.config("*", {
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
   })
 end
 

@@ -21,14 +21,22 @@ return {
           "somesass_ls",
           "cssls",
         },
-        auto_install = true,
       })
     end,
   },
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local nvlsp = require("lspconfig")
+      vim.diagnostic.config({
+        virtual_text = {
+          prefix = "●",
+          spacing = 4,
+        },
+        signs = true,
+        underline = true,
+        update_in_insert = false,
+        severity_sort = true,
+      })
 
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(event)
@@ -39,87 +47,73 @@ return {
           vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Hover docs" }))
         end,
       })
-      require("lspconfig").lua_ls.setup({
-        on_init = function(client)
-          local path = client.workspace_folders[1].name
-          if not vim.loop.fs_stat(path .. "/.luarc.json") and not vim.loop.fs_stat(path .. "/.luarc.jsonc") then
-            client.config.settings = vim.tbl_deep_extend("force", client.config.settings, {
-              Lua = {
-                runtime = {
-                  -- Tell the language server which version of Lua you're using
-                  -- (most likely LuaJIT in the case of Neovim)
-                  version = "LuaJIT",
-                },
-                -- Make the server aware of Neovim runtime files
-                workspace = {
-                  checkThirdParty = false,
-                  library = {
-                    vim.env.VIMRUNTIME,
-                    -- "${3rd}/luv/library"
-                    -- "${3rd}/busted/library",
-                  },
-                  -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-                  -- library = vim.api.nvim_get_runtime_file("", true)
-                },
-              },
-            })
 
-            client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+      -- Only lua_ls needs overrides; the rest use nvim-lspconfig's shipped lsp/ defaults.
+      -- Settings are injected at init unless the project pins its own .luarc.json.
+      vim.lsp.config("lua_ls", {
+        on_init = function(client)
+          local folder = client.workspace_folders and client.workspace_folders[1]
+          if folder then
+            local path = folder.name
+            if not vim.uv.fs_stat(path .. "/.luarc.json") and not vim.uv.fs_stat(path .. "/.luarc.jsonc") then
+              client.config.settings = vim.tbl_deep_extend("force", client.config.settings, {
+                Lua = {
+                  runtime = { version = "LuaJIT" },
+                  workspace = {
+                    checkThirdParty = false,
+                    library = { vim.env.VIMRUNTIME },
+                  },
+                },
+              })
+              client:notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+            end
           end
           return true
         end,
       })
 
-      -- clangd
-      nvlsp.clangd.setup({})
-      --pyright
-      nvlsp.pyright.setup({})
-      --bashls
-      nvlsp.bashls.setup({})
-      --zls : zig
-      nvlsp.zls.setup({})
-      nvlsp.ts_ls.setup({})
-      nvlsp.tailwindcss.setup({})
-      nvlsp.somesass_ls.setup({})
-      nvlsp.cssls.setup({})
-      local configs = require("lspconfig.configs")
+      -- Not shipped by nvim-lspconfig, so the whole config lives here.
+      -- Requires `npm install -g ls_emmet` (pedro757/emmet). Installed per-node-version
+      -- under ~/.nvm, so it leaves PATH if you switch node.
+      vim.lsp.config("ls_emmet", {
+        cmd = { "ls_emmet", "--stdio" },
+        filetypes = {
+          "html",
+          "css",
+          "scss",
+          "sass",
+          "less",
+          "sss",
+          "stylus",
+          "javascriptreact",
+          "typescriptreact",
+          "haml",
+          "xml",
+          "xsl",
+          "pug",
+          "slim",
+          "hbs",
+          "handlebars",
+        },
+        -- Emmet is context-free, so attach at cwd rather than hunting a project root.
+        root_dir = function(_, on_dir)
+          on_dir(vim.fn.getcwd())
+        end,
+        settings = {},
+      })
 
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-      -- NOTE: pedro757/emmet not maintained in a while, might need to replace
-      -- npm install -g ls_emmet
-      if not configs.ls_emmet then
-        configs.ls_emmet = {
-          default_config = {
-            cmd = { "ls_emmet", "--stdio" },
-            filetypes = {
-              "html",
-              "css",
-              "scss",
-              "javascriptreact",
-              "typescriptreact",
-              "haml",
-              "xml",
-              "xsl",
-              "pug",
-              "slim",
-              "sass",
-              "stylus",
-              "less",
-              "sss",
-              "hbs",
-              "handlebars",
-            },
-            root_dir = function(fname)
-              return vim.loop.cwd()
-            end,
-            settings = {},
-          },
-        }
-      end
-
-      nvlsp.ls_emmet.setup({ capabilities = capabilities })
+      vim.lsp.enable({
+        "lua_ls",
+        "clangd",
+        "pyright",
+        "bashls",
+        "zls",
+        "ts_ls",
+        "tailwindcss",
+        "somesass_ls",
+        "cssls",
+        "ls_emmet",
+      })
     end,
   },
 }
